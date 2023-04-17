@@ -43,12 +43,21 @@ public class MainActivity extends AppCompatActivity {
 
                 EditText edtxt = findViewById(R.id.editTextNumberDecimal7);
 
-                String no = edtxt.getText().toString();
+                double no =0;
+                try {
+                    no = Double.parseDouble(edtxt.getText().toString());
+                }
+                catch (Exception E)
+                {
+                    Toast.makeText(MainActivity.this, "Please Enter the length", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 TextView txt= findViewById(R.id.textView4);
 
                 DecimalFormat formatter = new DecimalFormat("#0.000");
 
-               double res= conversion(from, to, Double.parseDouble(no));
+               double res= conversion(from, to,no );
                 txt.setText(formatter.format(res)+ " "+ to);
 
             }
